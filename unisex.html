@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SusVara</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Fonts Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Playwrite+IT+Moderna:wght@300&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="unisex.css" />
+</head>
+
+<body>
+  <!-- Header & Navbar -->
+  <header class="header">
+    <div class="navbar-container">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="index.html">SusVara.</a>
+      </div>
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="dropdown">
+          <a href="#">Shop By Catagories <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="unisex.html">Unisex</a>
+            <a href="man.html">Man</a>
+            <a href="woman.html">Woman</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Shop By Collections <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="pandawara.html">SusVara X Pandawara</a>
+            <a href="sentuhan.html">Sentuhan Bumi</a>
+            <a href="#">Monochrome Muse</a>
+          </div>
+        </div>
+        <a href="circularity.html">Circularity</a>
+        <a href="about us.html">About Us</a>
+        <a href="#">Account</a>
+        <a href="#"><i class="fas fa-search"></i></a>
+        <a href="#" id="cart-icon"><i class="fas fa-shopping-bag"></i> <span>1</span></a>
+      </nav>
+      <div class="menu-icon" id="menu-icon"><i class="fas fa-bars"></i></div>
+    </div>
+    <script src="hamburger.js"></script>
+    <script src="navbar.js"></script>
+  </header>
+
+  <!-- Cart Shopping (Overlay & Sidebar untuk Cart) -->
+  <div id="overlay" class="overlay"></div>
+  <div class="sidebar" id="cart-sidebar">
+    <div class="sidebar-header">
+      <h2>Shopping Cart</h2>
+      <button id="close-sidebar">&times;</button>
+    </div>
+    <div class="sidebar-content">
+      <p>Your cart is empty.</p>
+    </div>
+  </div>
+  <script src="cart.js"></script>
+
+  <!-- Poster Atas -->
+  <div id="fullScreenCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="image/unisex2.jpg" class="d-block w-100" alt="Slide 1">
+      </div>
+    </div>
+  </div>
+
+  <!-- Kalimat Pendahulu -->
+
+  <!-- Container untuk Sidebar Filter dan Main Content (Product Grid) -->
+  <div class="content-container">
+    <!-- Sidebar Filter (Kategori) -->
+    <aside class="filter-sidebar">
+      <ul class="menu">
+        <!-- Kategori Atasan -->
+        <li>
+          <input type="checkbox" id="menu-atasan" />
+          <label for="menu-atasan" class="menu-label">
+            Atasan <i class="fas fa-chevron-down"></i>
+          </label>
+          <ul class="submenu">
+            <li>
+              <input type="checkbox" id="sub-atasan-tshirt" class="sub-checkbox">
+              <label for="sub-atasan-tshirt">T-Shirt</label>
+            </li>
+            <li>
+              <input type="checkbox" id="sub-atasan-kemeja" class="sub-checkbox">
+              <label for="sub-atasan-kemeja">Kemeja</label>
+            </li>
+            <li>
+              <input type="checkbox" id="sub-atasan-sweater" class="sub-checkbox">
+              <label for="sub-atasan-sweater">Sweater</label>
+            </li>
+          </ul>
+        </li>
+        <!-- Kategori Bawahan -->
+        <li>
+          <input type="checkbox" id="menu-bawahan" />
+          <label for="menu-bawahan" class="menu-label">
+            Bawahan <i class="fas fa-chevron-down"></i>
+          </label>
+          <ul class="submenu">
+            <li>
+              <input type="checkbox" id="sub-bawahan-celanaPendek" class="sub-checkbox">
+              <label for="sub-bawahan-celanaPendek">Celana Pendek</label>
+            </li>
+            <li>
+              <input type="checkbox" id="sub-bawahan-celanaPanjang" class="sub-checkbox">
+              <label for="sub-bawahan-celanaPanjang">Celana Panjang</label>
+            </li>
+            <li>
+              <input type="checkbox" id="sub-bawahan-rok" class="sub-checkbox">
+              <label for="sub-bawahan-rok">Rok</label>
+            </li>
+          </ul>
+        </li>
+        <!-- Kategori Aksesoris -->
+        <li>
+          <input type="checkbox" id="menu-aksesoris" />
+          <label for="menu-aksesoris" class="menu-label">
+            Aksesoris <i class="fas fa-chevron-down"></i>
+          </label>
+          <ul class="submenu">
+            <li>
+              <input type="checkbox" id="sub-aksesoris-topi" class="sub-checkbox">
+              <label for="sub-aksesoris-topi">Topi</label>
+            </li>
+            <li>
+              <input type="checkbox" id="sub-aksesoris-ikatPinggang" class="sub-checkbox">
+              <label for="sub-aksesoris-ikatPinggang">Ikat Pinggang</label>
+            </li>
+            <li>
+              <input type="checkbox" id="sub-aksesoris-tas" class="sub-checkbox">
+              <label for="sub-aksesoris-tas">Tas</label>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+    </aside>
+
+    <!-- Main Content (Product Grid) -->
+    <main class="main-content">
+      <div class="unisex-container">
+        <h1>Unisex Section</h1>
+        <p>
+          Dapatkan ruang untuk mengekspresikan diri dengan leluasa, sambil berkontribusi pada masa depan yang lebih
+          baik.
+          Diciptakan untuk semua orang yang peduli, kami menawarkan pakaian yang tidak hanya nyaman dan fleksibel,
+          <br>tetapi juga ramah lingkungan. Bebaskan gaya pribadimu dari konsumsi berlebihan. Temukan pakaian yang
+          dirancang
+          untuk
+          bertahan lama, memungkinkanmu untuk berekspresi dengan percaya diri, <br>tanpa mengorbankan nilai-nilai yang
+          kamu
+          junjung tinggi.
+        </p>
+      </div>
+      
+      <!-- Product Grid -->
+      <!-- Product Grid -->
+      <section class="product-grid">
+        <div class="product">
+          <div class="love-icon">
+            <i class="far fa-heart"></i>
+          </div>
+          <a href="produk.html" style="text-decoration: none;">
+            <div class="product-image">
+              <img src="image/man1.jpg" alt="Produk 2">
+              <div class="product-overlay">
+                <p class="overlay-text">SusVara.</p>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Short Sleeve Shirt</h3>
+              <p class="price">
+                <span class="original-price">"Rp. 1.999.000,00"</span><br>
+                <span class="discounted-price">Rp 1.000.000,00</span>
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="product">
+          <div class="love-icon">
+            <i class="far fa-heart"></i>
+          </div>
+          <a href="produk.html" style="text-decoration: none;">
+            <div class="product-image">
+              <img src="image/woman1.jpg" alt="Produk 2">
+              <div class="product-overlay">
+                <p class="overlay-text">SusVara.</p>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Atasan Crop Bra Lengan American</h3>
+              <p class="price">
+                <span class="original-price">Rp1.999.000,00</span><br>
+                <span class="discounted-price">Rp 1.299.000,00</span>
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="product">
+          <div class="love-icon">
+            <i class="far fa-heart"></i>
+          </div>
+          <a href="produk.html" style="text-decoration: none;">
+            <div class="product-image">
+              <img src="image/man2.jpg" alt="Produk 2">
+              <div class="product-overlay">
+                <p class="overlay-text">SusVara.</p>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Atasan Crop Bra Lengan American</h3>
+              <p class="price">
+                <span class="original-price">Rp1.999.000,00</span><br>
+                <span class="discounted-price">Rp 1.070.000,00</span>
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="product">
+          <div class="love-icon">
+            <i class="far fa-heart"></i>
+          </div>
+          <a href="produk.html" style="text-decoration: none;">
+            <div class="product-image">
+              <img src="image/woman3.jpg" alt="Produk 2">
+              <div class="product-overlay">
+                <p class="overlay-text">SusVara.</p>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Atasan Crop Bra Lengan American</h3>
+              <p class="price">
+                <span class="original-price">Rp1.999.000,00</span><br>
+                <span class="discounted-price">Rp 1.009.000,00</span>
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="product">
+          <div class="love-icon">
+            <i class="far fa-heart"></i>
+          </div>
+          <a href="produk.html" style="text-decoration: none;">
+            <div class="product-image">
+              <img src="image/man6.jpg" alt="Produk 2">
+              <div class="product-overlay">
+                <p class="overlay-text">SusVara.</p>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Short Sleeve Shirt</h3>
+              <p class="price">
+                <span class="original-price">"Rp. 1.999.000,00"</span><br>
+                <span class="discounted-price">Rp 1.000.000,00</span>
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="product">
+          <div class="love-icon">
+            <i class="far fa-heart"></i>
+          </div>
+          <a href="produk.html" style="text-decoration: none;">
+            <div class="product-image">
+              <img src="image/woman4.jpg" alt="Produk 2">
+              <div class="product-overlay">
+                <p class="overlay-text">SusVara.</p>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Atasan Crop Bra Lengan American</h3>
+              <p class="price">
+                <span class="original-price">Rp. 1.999.000,00</span><br>
+                <span class="discounted-price">Rp 1.250.000,00</span>
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="product">
+          <div class="love-icon">
+            <i class="far fa-heart"></i>
+          </div>
+          <a href="produk.html" style="text-decoration: none;">
+            <div class="product-image">
+              <img src="image/man8.jpg" alt="Produk 2">
+              <div class="product-overlay">
+                <p class="overlay-text">SusVara.</p>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Atasan Crop Bra Lengan American</h3>
+              <p class="price">
+                <span class="original-price">Rp. 1.999.000,00</span><br>
+                <span class="discounted-price">Rp 1.070.000,00</span>
+              </p>
+            </div>
+          </a>
+        </div>
+
+        <div class="product">
+          <div class="love-icon">
+            <i class="far fa-heart"></i>
+          </div>
+          <a href="produk.html" style="text-decoration: none;">
+            <div class="product-image">
+              <img src="image/woman7.jpg" alt="Produk 2">
+              <div class="product-overlay">
+                <p class="overlay-text">SusVara.</p>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Atasan Crop Bra Lengan American</h3>
+              <p class="price">
+                <span class="original-price">Rp. 1.999.000,00</span><br>
+                <span class="discounted-price">Rp 1.000.000,00</span>
+              </p>
+            </div>
+          </a>
+        </div>
+      </section>
+      <script src="liked.js"></script>
+    </main>
+  </div>
+
+    <!-- Struktur Pagination -->
+  <nav aria-label="Navigasi Pagination">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#" data-page="prev">Previous</a></li>
+      <li class="page-item active"><a class="page-link" href="#" data-page="1">1</a></li>
+      <li class="page-item"><a class="page-link" href="#" data-page="2">2</a></li>
+      <li class="page-item"><a class="page-link" href="#" data-page="3">3</a></li>
+      <li class="page-item"><a class="page-link" href="#" data-page="next">Next</a></li>
+    </ul>
+  </nav>
+
+  <!-- JavaScript untuk mengatur klik dan menandai halaman aktif -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var pageLinks = document.querySelectorAll('.page-link');
+      pageLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Hapus kelas 'active' dari semua item
+          document.querySelectorAll('.pagination li').forEach(function(item) {
+            item.classList.remove('active');
+          });
+          // Tambahkan kelas 'active' ke item yang diklik
+          this.parentElement.classList.add('active');
+
+          // Ambil data halaman (bisa digunakan untuk load konten dinamis)
+          var page = this.getAttribute('data-page');
+          console.log('Halaman yang dipilih: ' + page);
+          // Tambahkan logika tambahan di sini, misalnya memuat konten berdasarkan halaman
+        });
+      });
+    });
+  </script>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="sec aboutus">
+          <h2>About Me</h2>
+          <p>
+            SusVara mendukung gerakan slow fashion dengan menolak fast fashion
+            berlebihan. Kami fokus pada desain abadi, bahan berkualitas, dan
+            produksi yang etis serta ramah lingkungan. Kami menginspirasi
+            perubahan menuju mode yang lebih sadar dan berkelanjutan.
+          </p>
+          <ul class="sci">
+            <li>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="sec quicklinks">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="#">AboutUs</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="sec quicklinks">
+          <h2>Shop</h2>
+          <ul>
+            <li><a href="#">SusVara. X Pandawara Group</a></li>
+            <li><a href="#">Campaign</a></li>
+            <li><a href="sentuhan.html">Sentuhan Bumi</a></li>
+            <li><a href="#">Unisex</a></li>
+            <li><a href="#">Man</a></li>
+            <li><a href="#">Women</a></li>
+          </ul>
+        </div>
+        <div class="sec contact">
+          <h2>Contact Us</h2>
+          <ul class="info">
+            <li>
+              <span><i class="fas fa-map-marker-alt"></i></span>
+              <span
+                >Jalan Ketintang, No. 23, Wonokromo, Surabaya, Jawa Timur,
+                (Kantor Pusat).
+                <br />
+                Jalan Dago, No. 15, Coblong, Bandung, Jawa Barat.
+                <br />
+                Jalan Sudirman No. 45, Kebayoran Baru, Jakarta Selatan, DKI
+                Jakarta.
+              </span>
+            </li>
+            <li>
+              <span><i class="fas fa-phone"></i></span>
+              <p>
+                <a href="#">+62 831 5566 7788</a>
+              </p>
+            </li>
+            <li>
+              <span><i class="fas fa-envelope"></i></span>
+              <p>
+                <a href="#">susvara.0303@gmail.com</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <div class="copyrightText">
+      <p>© 2025 SusVara. All Rights Reserved.</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SusVara</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Fonts Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Playwrite+IT+Moderna:wght@300&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="produk.css" />
+</head>
+
+<body>
+  <!-- Header & Navbar -->
+  <header class="header">
+    <div class="navbar-container">
+      <!-- Logo lebih ke kiri -->
+      <div class="logo">
+        <a href="index.html">SusVara.</a>
+      </div>
+
+      <!-- Navbar lebih ke kanan -->
+      <nav class="navbar">
+        <div class="dropdown">
+          <a href="#"
+            >Shop By Catagories <i class="fas fa-chevron-down"></i
+          ></a>
+          <div class="dropdown-menu">
+            <a href="unisex.html">Unisex</a>
+            <a href="man.html">Man</a>
+            <a href="woman.html">Woman</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <a href="#"
+            >Shop By Collections <i class="fas fa-chevron-down"></i
+          ></a>
+          <div class="dropdown-menu">
+            <a href="pandawara.html">SusVara X Pandawara</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="#">Circularity <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="lipe.html">Lifecycle Responsibility</a>
+            <a href="sentuhan.html">Campaign</a>
+          </div>
+        </div>
+        <a href="about us.html">Our Story</a>
+        <a href="account.html">Account</a>
+        <a href="#"><i class="fas fa-search"></i></a>
+        <a href="#" id="cart-icon"
+          ><i class="fas fa-shopping-bag"></i> <span>1</span></a
+        >
+      </nav>
+      <div class="menu-icon" id="menu-icon"><i class="fas fa-bars"></i></div>
+    </div>
+    <script src="hamburger.js"></script>
+    <script src="navbar.js"></script>
+  </header>
+
+  <!-- Cart Shopping -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- Sidebar Keranjang -->
+  <div class="sidebar" id="cart-sidebar">
+    <div class="sidebar-header">
+      <h2>Shopping Cart</h2>
+      <button id="close-sidebar">&times;</button>
+    </div>
+    <div class="sidebar-content">
+      <p>Your cart is empty.</p>
+    </div>
+  </div>
+  <script src="cart.js"></script>
+
+  <!-- Detail Produk -->
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <!-- Gambar Produk -->
+      <div class="col-lg-6 col-md-12 text-center">
+        <div class="product-image">
+          <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="image/produk.jpg" class="d-block w-100" alt="Product Image 1">
+              </div>
+              <div class="carousel-item">
+                <img src="image/produk.jpg" class="d-block w-100" alt="Product Image 3">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Detail Produk -->
+      <div class="col-lg-6 col-md-12">
+        <div class="product-details">
+          <div class="product-title">
+            <h1>SusVara X Pandawara - White Outer</h1>
+          </div>
+          <div class="product-subtitle">
+            <h1>Special Edition</h1>
+          </div>
+          <div class="produk-price">Rp 1.299.000,00</div>
+          <!-- Rating & Review -->
+          <div class="product-rating">
+            <span class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </span>
+            <span class="review-count">(23 reviews)</span>
+          </div>
+          <!-- Availability -->
+          <div class="availability">
+            <p><strong>Availability:</strong> In Stock</p>
+          </div>
+          <!-- Size Selection -->
+          <div class="size">
+            <span>Select Size:</span>
+            <div>
+              <button>S</button>
+              <button>M</button>
+              <button>L</button>
+              <button>XL</button>
+            </div>
+            <a href="#" class="size-guide">Size Guide</a>
+          </div>
+          <!-- Quantity -->
+          <div class="quantity-title">
+            <span>Quantity</span>
+          </div>
+          <div class="quantity">
+            <button type="button" class="decrement" onclick="decrementQuantity()">&#8722;</button>
+            <input type="number" id="quantity" value="1" min="1" max="50" readonly>
+            <button type="button" class="increment" onclick="incrementQuantity()">&#43;</button>
+          </div>
+          <!-- Action Buttons -->
+          <div class="button">
+            <button class="cart">Add to Cart</button>
+            <!-- Tambahkan atribut data-bs-toggle dan data-bs-target untuk memicu modal -->
+            <button class="buy" data-bs-toggle="modal" data-bs-target="#paymentModal">Buy Now</button>
+          </div>
+          <!-- Social Sharing -->
+          <div class="social-sharing">
+            <span>Share:</span>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Product Description -->
+  <div class="product-description">
+    <button class="accordion">Description</button>
+    <div class="panel">
+      <p>
+        Didesain khusus untuk kolaborasi kami dengan Pandawara Group, sebuah simbol dari komitmen bersama kami
+        terhadap aksi lingkungan. Potongan ini menampilkan desain yang terinspirasi oleh dedikasi Pandawara
+        untuk lingkungan yang bersih, memadukan gaya berkelanjutan SusVara dengan citra yang mewakili pekerjaan
+        berdampak mereka. Dibuat dari kain yang ringan dan sejuk, ini adalah bukti misi bersama kami.
+      </p>
+      <p>
+        Sablon Tangan oleh: [ Pandawara Group ]
+      </p>
+      <p>
+        Produk ini menggunakan kain TENCEL™, serat Lyocell yang diproduksi dari kayu bahan baku alami yang
+        bersumber secara etis, memastikan sentuhan lembut pada kulit Anda dan dampak positif pada planet ini.
+      </p>
+      Disclaimer: kami dapat melakukan pengiriman ke rumah dan Cash on Delivery (COD) kecuali pada area tertentu.
+      Order yang tidak bisa di layani akan di batalkan secara otomatis.
+      <br><a href="#" class="link" style="color: black;">Silahkan klik disini untuk informasi lebih lanjut.</a>
+    </div>
+  </div>
+
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+        }
+      });
+    }
+  </script>
+  </div>
+  </div>
+
+  <!-- Modal Payment -->
+  <style>
+    /* Custom Button Style */
+    .btn-custom {
+      background-color: #ff5733;
+      /* Ganti dengan warna yang diinginkan */
+      border-color: #ff5733;
+      color: #fff;
+    }
+
+    .btn-custom:hover {
+      background-color: #e64e2b;
+      border-color: #e64e2b;
+    }
+
+    .form-select:hover,
+    .form-select:focus {
+      background-color: #fff;
+      border-color: #ced4da;
+      box-shadow: none;
+    }
+  </style>
+  <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="paymentModalLabel">Payment Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Form Pembayaran untuk Website Pakaian -->
+          <form id="paymentForm">
+            <!-- Data Pembeli -->
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Full Name</label>
+              <h5>Budi Santoso Putra</h5>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <h5>putrasantoso123@gmail.com</h5>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number</label>
+              <h5>+62 867-9657-7800</h5>
+            </div>
+            <!-- Alamat Pengiriman -->
+            <div class="mb-3">
+              <label for="shippingAddress" class="form-label">Shipping Address</label>
+              <textarea class="form-control" id="shippingAddress" rows="2" placeholder="Enter your shipping address"
+                required></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="cardName" class="form-label">Postal code</label>
+              <input type="text" class="form-control" id="cardName" placeholder="12345" required>
+            </div>
+            <div class="mb-3" id="storeSelection">
+              <label for="store" class="form-label">Payment Method</label>
+              <select class="form-select" id="store">
+                <option value="">Payment Method</option>
+                <option value="jakarta">COD</option>
+                <option value="surabaya">Transfer</option>
+                <option value="bandung">Cash</option>
+              </select>
+            </div>
+            <!-- Promo Code (opsional) -->
+            <div class="mb-3">
+              <label for="promoCode" class="form-label">Promo Code (optional)</label>
+              <input type="text" class="form-control" id="promoCode" placeholder="Enter promo code if any">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Payment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="quantity.js"></script>
+
+  <!-- productreview -->
+  <section class="product-review">
+    <div class="review-header">
+    </div>
+    <div class="review-list">
+      <!-- Review Card 1 -->
+      <div class="review-card">
+        <div class="review-card-header">
+          <img src="https://via.placeholder.com/60" alt="Reviewer Avatar" class="review-avatar" />
+          <div class="reviewer-info">
+            <span class="reviewer-name">Jane Doe</span>
+            <span class="review-date">Mar 7, 2025</span>
+          </div>
+          <div class="review-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+        </div>
+        <div class="review-card-body">
+          <p>"Produk ini benar-benar luar biasa. Saya sangat puas dengan kualitas dan pelayanan yang diberikan.
+            Recommended banget!"</p>
+        </div>
+        <div class="review-card-footer">
+          <button class="like-btn"><i class="fas fa-thumbs-up"></i> 12</button>
+          <button class="reply-btn"><i class="fas fa-reply"></i> Reply</button>
+        </div>
+      </div>
+      <!-- Review Card 2 -->
+      <div class="review-card">
+        <div class="review-card-header">
+          <img src="https://via.placeholder.com/60" alt="Reviewer Avatar" class="review-avatar" />
+          <div class="reviewer-info">
+            <span class="reviewer-name">John Smith</span>
+            <span class="review-date">Feb 28, 2025</span>
+          </div>
+          <div class="review-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="review-card-body">
+          <p>"Saya mendapatkan pengalaman yang sangat memuaskan. Pengiriman cepat dan produk sesuai dengan harapan. Luar
+            biasa!"</p>
+        </div>
+        <div class="review-card-footer">
+          <button class="like-btn"><i class="fas fa-thumbs-up"></i> 8</button>
+          <button class="reply-btn"><i class="fas fa-reply"></i> Reply</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Klimat Pendahulu -->
+  <div class="unisex-container">
+    <h1>Wanna See More ?</h1>
+  </div>
+
+  <!-- Product Grid -->
+  <section class="product-grid">
+    <div class="product">
+      <div class="love-icon">
+        <i class="far fa-heart"></i>
+      </div>
+      <a href="produk.html" style="text-decoration: none;">
+        <div class="product-image">
+          <img src="image/SejauhDFK2024_studio7361.png" alt="Produk 2">
+          <div class="product-overlay">
+            <p class="overlay-text">SusVara.</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Short Sleeve Shirt</h3>
+          <p class="price">
+            <span class="original-price">"Rp. 1.999.000,00"</span><br>
+            <span class="discounted-price">Rp 1.000.000,00</span>
+          </p>
+        </div>
+      </a>
+    </div>
+
+    <div class="product">
+      <div class="love-icon">
+        <i class="far fa-heart"></i>
+      </div>
+      <a href="produk.html" style="text-decoration: none;">
+        <div class="product-image">
+          <img src="image/SejauhDFK2024_studio7361.png" alt="Produk 2">
+          <div class="product-overlay">
+            <p class="overlay-text">SusVara.</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Short Sleeve Shirt</h3>
+          <p class="price">
+            <span class="original-price">"Rp. 1.999.000,00"</span><br>
+            <span class="discounted-price">Rp 1.000.000,00</span>
+          </p>
+        </div>
+      </a>
+    </div>
+
+    <div class="product">
+      <div class="love-icon">
+        <i class="far fa-heart"></i>
+      </div>
+      <a href="produk.html" style="text-decoration: none;">
+        <div class="product-image">
+          <img src="image/SejauhDFK2024_studio7361.png" alt="Produk 2">
+          <div class="product-overlay">
+            <p class="overlay-text">SusVara.</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Short Sleeve Shirt</h3>
+          <p class="price">
+            <span class="original-price">"Rp. 1.999.000,00"</span><br>
+            <span class="discounted-price">Rp 1.000.000,00</span>
+          </p>
+        </div>
+      </a>
+    </div>
+
+    <div class="product">
+      <div class="love-icon">
+        <i class="far fa-heart"></i>
+      </div>
+      <a href="produk.html" style="text-decoration: none;">
+        <div class="product-image">
+          <img src="image/SejauhDFK2024_studio7361.png" alt="Produk 2">
+          <div class="product-overlay">
+            <p class="overlay-text">SusVara.</p>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-name">Short Sleeve Shirt</h3>
+          <p class="price">
+            <span class="original-price">"Rp. 1.999.000,00"</span><br>
+            <span class="discounted-price">Rp 1.000.000,00</span>
+          </p>
+        </div>
+      </a>
+    </div>
+
+    <!-- (Produk lainnya...) -->
+    <!-- Ulangi struktur produk seperti di atas sesuai kebutuhan -->
+  </section>
+  <script src="liked.js"></script>
+
+  <!-- SusVara Vision -->
+  <div class="site-box-container">
+    <div class="site-box" data-size="5">
+      <!-- Item 1 -->
+      <div class="item">
+        <div class="text-w-icon container">
+          <img src="image/sustainable material.png" alt="Sustainable Materials" style="width: 100px; height: 100px;">
+        </div>
+        <div class="text-w-icon content">
+          <h7 class="title">Sustainable Materials</h7>
+        </div>
+      </div>
+      <!-- Item 2 -->
+      <div class="item">
+        <div class="text-w-icon container">
+          <img src="image/ethical fabric.png" alt="Ethical Fabrics" style="width: 100px; height: 100px;">
+        </div>
+        <div class="text-w-icon content">
+          <h7 class="title">Ethical Fabrics</h7>
+        </div>
+      </div>
+      <!-- Item 3 -->
+      <div class="item">
+        <div class="text-w-icon container">
+          <img src="image/recycled fabric.png" alt="Recycled Fabrics" style="width: 100px; height: 100px;">
+        </div>
+        <div class="text-w-icon content">
+          <h7 class="title">Recycled Fabrics</h7>
+        </div>
+      </div>
+      <!-- Item 4 -->
+      <div class="item">
+        <div class="text-w-icon container">
+          <img src="image/zero waste.png" alt="Zero Waste" style="width: 100px; height: 100px;">
+        </div>
+        <div class="text-w-icon content">
+          <h7 class="title">Zero Waste</h7>
+        </div>
+      </div>
+      <!-- Item 5 -->
+      <div class="item">
+        <div class="text-w-icon container">
+          <img src="image/climate action.png" alt="Climate Action" style="width: 100px; height: 100px;">
+        </div>
+        <div class="text-w-icon content">
+          <h7 class="title">Climate Action</h7>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="sec aboutus">
+        <h2>About Me</h2>
+        <p>
+          SusVara mendukung gerakan slow fashion dengan menolak fast fashion
+          berlebihan. Kami fokus pada desain abadi, bahan berkualitas, dan
+          produksi yang etis serta ramah lingkungan. Kami menginspirasi
+          perubahan menuju mode yang lebih sadar dan berkelanjutan.
+        </p>
+        <ul class="sci">
+          <li>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="sec quicklinks">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="#">AboutUs</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="sec quicklinks">
+        <h2>Shop</h2>
+        <ul>
+          <li><a href="#">SusVara. X Pandawara Group</a></li>
+          <li><a href="#">Circularity</a></li>
+          <li><a href="#">Special Edition</a></li>
+          <li><a href="#">Unisex</a></li>
+          <li><a href="#">Man</a></li>
+          <li><a href="#">Women</a></li>
+        </ul>
+      </div>
+      <div class="sec contact">
+        <h2>Contact Us</h2>
+        <ul class="info">
+          <li>
+            <span><i class="fas fa-map-marker-alt"></i></span>
+            <span>Jalan Ketintang, No. 23<br>
+              Wonokromo, Surabaya,<br>
+              Jawa Timur, Indonesia</span>
+          </li>
+          <li>
+            <span><i class="fas fa-phone"></i></span>
+            <p>
+              <a href="#">085730221385</a><br>
+              <a href="#">085602386500</a><br>
+              <a href="#">085770178549</a>
+            </p>
+          </li>
+          <li>
+            <span><i class="fas fa-envelope"></i></span>
+            <p>
+              <a href="#">susvara.0303@gmail.com</a>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <div class="copyrightText">
+    <p>© 2025 SusVara. All Rights Reserved.</p>
+  </div>
+  <script src="hamburger.js"></script>
+  <script src="navbar.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,943 @@
+/* Import Font */
+@font-face {
+  font-family: "Holiday";
+  src: url("fonts/HolidayFree.otf") format("truetype");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Cabin", sans-serif;
+  background-color: white;
+  transition: margin-left 0.3s ease; /* Efek dorong */
+}
+
+.mt-5 {
+  margin-top: 7rem !important;
+}
+
+.mt-4 {
+  margin-top: 5rem !important;
+  margin-bottom: 5rem !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: transparent; /* Default transparan */
+  padding: 10px 0; /* Tambah padding atas dan bawah */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.header.hidden {
+  transform: translateY(-100%);
+}
+
+.header.shifted {
+  transform: translateX(-450px);
+}
+
+.header:hover {
+  background-color: white; /* Berubah menjadi putih saat disentuh */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 70px;
+}
+
+.logo {
+  font-family: "Holiday", cursive;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.logo a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.logo a:hover {
+  color: #8b4513;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  font-size: 15px;
+  margin-right: 5px;
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 2px;
+}
+
+.navbar a {
+  color: black;
+  transition: color 0.3s ease;
+  text-decoration: none; /* Hapus underline */
+}
+
+.navbar a:hover {
+  color: #8b4513;
+  text-decoration: none; /* Pastikan tidak ada underline saat hover */
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Menempel langsung di bawah navbar */
+  left: 0;
+  display: none;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  min-width: 200px;
+  padding: 10px 0; /* Ruang agar isi dropdown tidak terlalu rapat */
+  z-index: 1000; /* Supaya dropdown tidak tertutup elemen lain */
+}
+
+/* Gaya untuk item dalam dropdown */
+.dropdown-menu a {
+  display: block;
+  padding: 10px 5px;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  color: #8b4513;
+}
+
+/* Tampilkan dropdown saat hover */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  display: block; /* Dropdown tetap terlihat saat dihover */
+}
+
+/* Icon hamburger default disembunyikan */
+.menu-icon {
+  display: none;
+}
+
+/* Tampilan untuk layar kurang dari 768px */
+@media screen and (max-width: 1080px) {
+  /* Tampilkan icon hamburger */
+  .menu-icon {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* Sembunyikan menu navbar secara default */
+  .navbar {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 60px; /* Sesuaikan dengan tinggi header */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+
+  /* Saat menu aktif, tampilkan menu */
+  .navbar.active {
+    display: flex;
+  }
+}
+
+/* Keranjang */
+/* Overlay (Latar Belakang Gelap Saat Sidebar Dibuka) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Efek opacity */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 998;
+}
+
+/* Saat sidebar aktif, overlay muncul */
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sidebar dengan efek push */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -450px;
+  width: 450px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+/* Efek push */
+.sidebar.active {
+  right: 0;
+}
+
+/* Header Sidebar */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebar-header h2 {
+  .sidebar-header h2 {
+    font-size: 20px;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+}
+
+.sidebar-header button {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Konten Sidebar */
+.sidebar-content {
+  padding: 20px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 250px;
+  }
+}
+
+/* Main */
+.container-judul {
+  font-family: "Amiri", serif;
+  font-size: 44px;
+  color: black;
+  font-style: normal;
+  display: grid;
+  place-items: center;
+  margin-top: 150px;
+}
+
+.container-tentang {
+  font-family: "Alegreya Sans", sans-serif;
+  font-size: 18px;
+  color: #222222;
+  letter-spacing: 1px;
+  font-style: normal;
+  display: grid;
+  place-items: center;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.section {
+  height: auto;
+  padding: 50px;
+  text-align: center;
+  background-color: white;
+}
+
+.parallax {
+  position: relative;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  padding: 20px;
+}
+
+.parallax .text-container {
+  font-family: "Alegreya Sans", sans-serif;
+  letter-spacing: 1px;
+  position: absolute;
+  display: flex;
+  width: 100%;
+  padding: 0 100px;
+  color: white;
+  font-size: 18px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.parallax .text-container p {
+  margin-bottom: 30px; /* Beri jarak antar paragraf */
+}
+
+.text-left,
+.text-right {
+  width: 40%;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.parallax-1 {
+  background-image: url("image/poster\ bawah.jpg"); /* Ganti dengan gambar */
+  width: 100%;
+  height: 778px;
+}
+
+.parallax-2 {
+  background-image: url("image/poster\ bawah.jpg"); /* Ganti dengan gambar */
+  width: 100%;
+  height: 778px;
+}
+.about {
+  height: 90vh;
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about .main img {
+  width: 580px;
+  max-width: 100%;
+  height: auto;
+  padding: 0 10px;
+}
+
+.all-text {
+  width: 600px;
+  max-width: 100%;
+  padding: 0 10px;
+}
+
+.main {
+  width: 1300px;
+  max-width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.all-text h1 {
+  font-family: "Amiri", serif;
+  font-size: 40px;
+  font-style: normal;
+  color: black;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.all-text p {
+  font-family: "Alegreya Sans", sans-serif;
+  font-size: 18px;
+  color: #222222;
+  letter-spacing: 1px;
+  font-style: normal;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.button-tentang {
+  display: flex;
+  justify-content: center; /* Pusatkan tombol */
+  gap: 20px; /* Beri jarak antara tombol */
+  margin-top: 20px;
+}
+
+.btn-custom {
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+/* Tombol Putih dengan Hover Hitam */
+.btn-white {
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+}
+
+.btn-white:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Tombol Hitam dengan Hover Putih */
+.btn-black {
+  background-color: black;
+  color: white;
+}
+
+.btn-black:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Kanan Gambar Teks Kiri */
+/* Section utama */
+.content-section {
+  width: 100%;
+  text-align: center;
+  padding: 50px 0;
+}
+
+/* Tombol header */
+.header-button {
+  background: black;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  font-size: 12px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Konten utama (teks di kiri, gambar di kanan) */
+/* Container utama */
+.custom-section {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 3rem 0; /* Sama dengan py-5 */
+  justify-content: center; /* Agar di mobile terpusat */
+}
+
+/* Default: full width (mobile) */
+.custom-text,
+.custom-image {
+  width: 100%;
+  max-width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Untuk layar medium ke atas */
+@media (min-width: 768px) {
+  .custom-text,
+  .custom-image {
+    width: 50%;
+    max-width: 50%;
+    margin-bottom: 0;
+  }
+  .custom-text {
+    padding-right: 3rem; /* Sama dengan pe-md-5 */
+    text-align: left; /* Teks rata kiri */
+  }
+  .custom-image {
+    padding-left: 3rem; /* Sama dengan ps-md-5 */
+    text-align: left;
+  }
+}
+
+/* Gaya judul */
+.custom-text h1 {
+  font-family: "Amiri", serif;
+  font-size: 40px;
+  font-style: normal;
+  color: black;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Gaya paragraf */
+.custom-text p {
+  font-family: "Alegreya Sans", sans-serif;
+  font-size: 18px;
+  color: #222222;
+  letter-spacing: 1px;
+  font-style: normal;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Gaya gambar */
+.custom-image img {
+  width: 100%;
+  height: auto;
+}
+
+.btn-custom btn-black {
+  margin-top: 20px;
+  /* Bisa diubah sesuai keinginan */
+  text-align: center;
+  /* Bisa diubah ke 'left' atau 'right' */
+}
+
+#campaign button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #8b4513;
+  /* Warna aksen biru Twitter */
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#campaign button:hover {
+  background-color: #2e7d32;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.product {
+  background-color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.love-icon i {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #000;
+  font-size: 21px;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.love-icon i.liked {
+  color: #5e3023;
+}
+
+.product img {
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.product-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.overlay-text {
+  color: #5e3023;
+  font-size: 45px;
+  font-weight: bold;
+  font-family: "Holiday", cursive;
+  text-align: center;
+  padding: 10px;
+  transform: translateY(100%);
+  transition: transform 0.4s ease-in-out;
+}
+
+.product:hover .product-overlay {
+  opacity: 1;
+}
+
+.product:hover .overlay-text {
+  transform: translateY(0);
+}
+
+@media (max-width: 1080px) {
+  .overlay-text {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .overlay-text {
+    font-size: 18px;
+  }
+}
+
+.product-info {
+  padding: 10px;
+}
+
+.product-name {
+  font-size: 17px;
+  font-weight: bold;
+  color: #333;
+  margin: 5px 0;
+  text-align: left;
+}
+
+.price {
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.discounted-price {
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Footer */
+footer {
+  padding: 50px 100px;
+  background: rgba(0, 0, 0, 0.148);
+}
+
+footer .container {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+footer .sec h2 {
+  color: #000;
+  font-weight: 500;
+  margin-bottom: 15px;
+  font-size: 25px;
+  position: relative;
+}
+
+footer .sec h2::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: #000;
+}
+
+footer .sec p {
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: #000;
+}
+
+.sci {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(5, 50px);
+  gap: 10px;
+}
+
+.sci li {
+  list-style: none;
+}
+
+.sci li a {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  color: #000;
+  background: rgba(0, 0, 0, 0.148);
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.sci li a:hover {
+  background: #000;
+  color: #fff;
+}
+
+.quicklinks ul,
+.quicklinks li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quicklinks li a {
+  text-decoration: none;
+  color: #000;
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 1px;
+  font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+.quicklinks li a:hover {
+  color: #8b4513;
+}
+
+.info li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.info li span {
+  font-family: "Cabin", sans-serif;
+  font-size: 15px;
+  color: #000;
+  letter-spacing: 1px;
+}
+
+.info a {
+  text-decoration: none;
+  color: #000;
+}
+
+.info a:hover {
+  color: #8b4513;
+}
+
+.copyrightText {
+  padding: 8px 100px;
+  text-align: center;
+  font-family: "Cabin", sans-serif;
+  color: #000;
+  letter-spacing: 1px;
+  font-size: 15px;
+  background: rgba(0, 0, 0, 0.274);
+}
+
+@media (max-width: 991px) {
+  footer {
+    padding: 40px;
+  }
+
+  footer .container {
+    grid-template-columns: 1fr;
+  }
+
+  .copyrightText {
+    padding: 8px 40px;
+  }
+}
+
+/* Footer */
+footer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 50px 100px;
+  background: rgba(0, 0, 0, 0.148);
+}
+
+footer .container {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+  grid-gap: 20px;
+}
+
+footer .container .sec h2 {
+  position: relative;
+  color: black;
+  font-weight: 500;
+  margin-bottom: 15px;
+  font-size: 25px;
+}
+
+footer .container .sec h2::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: black;
+}
+
+footer .container .sec p {
+  color: black;
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+.fa-map-marker-alt {
+  font-size: 21px; /* Sesuaikan ukuran sesuai kebutuhan */
+}
+
+.sci {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(5, 50px);
+  grid-gap: 10px;
+  padding: 0;
+}
+
+.sci li {
+  list-style: none;
+}
+
+.sci li a {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  color: black;
+  background: rgba(0, 0, 0, 0.148);
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.sci li a:hover {
+  background: black;
+  color: white;
+}
+
+.quicklinks {
+  position: relative;
+}
+
+.quicklinks ul {
+  margin: 0;
+  padding: 0;
+}
+
+.quicklinks li {
+  list-style: none;
+}
+
+.quicklinks li a {
+  color: black;
+  font-family: "Cabin", sans-serif;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: inline-block;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+.quicklinks li a:hover {
+  color: #8b4513;
+}
+
+.info {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.info li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  margin-bottom: 16px;
+}
+
+.info li span:nth-child(1) {
+  color: black;
+  font-size: 20px;
+}
+
+.info li span {
+  color: black;
+  letter-spacing: 1px;
+  font-family: "Cabin", sans-serif;
+  font-size: 15px;
+}
+
+.info a {
+  color: black;
+  text-decoration: none;
+}
+
+.info li a:hover {
+  color: #8b4513;
+}
+
+.copyrightText {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.274);
+  padding: 8px 100px;
+  text-align: center;
+  justify-content: center;
+  font-family: "Cabin", sans-serif;
+  color: black;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+@media (max-width: 991px) {
+  footer {
+    padding: 40px;
+  }
+  footer .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .copyrightText {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.274);
+    padding: 8px 40px;
+  }
+}
+
+@media (max-width: 991px) {
+  footer .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

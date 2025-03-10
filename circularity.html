@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SusVara</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Fonts Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Playwrite+IT+Moderna:wght@300&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      .flip-box {
+        width: 1346x;
+        height: 400px;
+        perspective: 1000px;
+      }
+
+      .flip-box-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transition: transform 0.6s;
+      }
+
+      .flip-box:hover .flip-box-inner {
+        transform: rotateX(180deg);
+        border-radius: 15px;
+        /* Efek rounded saat flip */
+      }
+
+      .flip-box-front,
+      .flip-box-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        overflow: hidden;
+        border-radius: inherit;
+      }
+
+      .flip-box-front {
+        background-color: transparent;
+      }
+
+      .flip-box-front img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Pastikan gambar tetap proporsional */
+      }
+
+      .flip-box-back {
+        background-color: #15202b;
+        transform: rotateX(180deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .flip-box-back img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Pastikan gambar tetap proporsional */
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      .flip-box-back {
+        background-color: #15202b;
+        transform: rotateX(180deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+        /* Pastikan padding 0 agar tidak ada efek tambahan */
+        margin: 0;
+        border: none;
+        position: relative;
+      }
+
+      .flip-button img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+      }
+
+      .flip-box {
+        position: relative;
+        /* Pastikan parent memiliki posisi relatif */
+      }
+
+      .tukar-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px 20px;
+        background-color: #8b4513;
+        /* Warna aksen biru Twitter */
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .flip-box-back.tukar-active img {
+        opacity: 0.5;
+        /* Gambar menjadi lebih gelap */
+      }
+
+      .tukar-button:hover {
+        background-color: #2e7d32;
+        /* Warna lebih gelap saat hover */
+      }
+
+      .content-box {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .section-divider {
+        border-top: 3px solid #8b4513;
+        margin: 50px auto;
+        width: 80%;
+      }
+
+      .campaign-button-container {
+        margin-top: 20px;
+        /* Bisa diubah sesuai keinginan */
+        text-align: center;
+        /* Bisa diubah ke 'left' atau 'right' */
+      }
+
+      #campaign button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #8b4513;
+        /* Warna aksen biru Twitter */
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      #campaign button:hover {
+        background-color: #2e7d32;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header & Navbar -->
+    <header class="header">
+      <div class="navbar-container">
+        <!-- Logo lebih ke kiri -->
+        <div class="logo">
+          <a href="index.html">SusVara.</a>
+        </div>
+
+        <!-- Navbar lebih ke kanan -->
+        <nav class="navbar">
+          <div class="dropdown">
+            <a href="#"
+              >Shop By Catagories <i class="fas fa-chevron-down"></i
+            ></a>
+            <div class="dropdown-menu">
+              <a href="unisex.html">Unisex</a>
+              <a href="man.html">Man</a>
+              <a href="woman.html">Woman</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <a href="#"
+              >Shop By Collections <i class="fas fa-chevron-down"></i
+            ></a>
+            <div class="dropdown-menu">
+              <a href="pandawara.html">SusVara X Pandawara</a>
+              <a href="sentuhan.html">Sentuhan Bumi</a>
+              <a href="#">Monochrome Muse</a>
+            </div>
+          </div>
+          <a href="circularity.html">Circularity</a>
+          <a href="about us.html">About Us</a>
+          <a href="#">Account</a>
+          <a href="#"><i class="fas fa-search"></i></a>
+          <a href="#" id="cart-icon"
+            ><i class="fas fa-shopping-bag"></i> <span>1</span></a
+          >
+        </nav>
+        <div class="menu-icon" id="menu-icon"><i class="fas fa-bars"></i></div>
+      </div>
+      <script src="hamburger.js"></script>
+      <script src="navbar.js"></script>
+    </header>
+
+    <!-- Cart Shopping -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Sidebar Keranjang -->
+    <div class="sidebar" id="cart-sidebar">
+      <div class="sidebar-header">
+        <h2>Shopping Cart</h2>
+        <button id="close-sidebar">&times;</button>
+      </div>
+      <div class="sidebar-content">
+        <p>Your cart is empty.</p>
+      </div>
+    </div>
+    <script src="cart.js"></script>
+
+    <div id="fullScreenCarousel" class="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="flip-box">
+            <div class="flip-box-inner">
+              <div class="flip-box-front">
+                <img src="image/pandawara.png" alt="Slide 1" />
+              </div>
+              <div class="flip-box-back">
+                <div class="flip-button" onclick="scrollToCampaign()">
+                  <img
+                    src="image/Circularity (3000 x 1000 px).jpg"
+                    alt="Tukar Baju"
+                  />
+                </div>
+                <button class="tukar-button" onclick="scrollToCampaign()">
+                  Tukar di sini
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seksi Edukasi Fashion Ramah Lingkungan -->
+    <section id="edukasi" class="container mt-5 section-bordered">
+      <h2>Sustainable Fashion: Langkah Menuju Gaya yang Bertanggung Jawab</h2>
+      <p>
+        Di Susvara, kami percaya bahwa fashion bukan hanya tentang gaya, tetapi
+        juga tentang dampak yang kita tinggalkan pada bumi. Sustainable fashion
+        atau mode berkelanjutan adalah pendekatan dalam industri pakaian yang
+        berfokus pada produksi etis, bahan ramah lingkungan, serta siklus hidup
+        pakaian yang lebih panjang. Dengan memilih slow fashion, kita mengurangi
+        limbah tekstil, menghemat sumber daya, dan mendukung pekerja yang
+        mendapatkan upah serta kondisi kerja yang layak. Melalui koleksi kami,
+        Susvara menghadirkan pakaian berkualitas tinggi yang dibuat dengan
+        proses yang lebih ramah lingkungan. Setiap pembelian bukan hanya tentang
+        menambah koleksi pakaian, tetapi juga menjadi bagian dari gerakan
+        perubahan menuju industri fashion yang lebih adil dan berkelanjutan.
+        Mari bersama-sama membangun masa depan yang lebih hijau dengan memilih
+        fashion yang bertanggung jawab! 🌱
+      </p>
+      <ul class="list-unstyled">
+        <li>
+          Pilih bahan yang ramah lingkungan seperti katun organik dan linen.
+        </li>
+        <li>
+          Kurangi fast fashion, pilih produk berkualitas tinggi dan tahan lama.
+        </li>
+        <li>Daur ulang dan tukar pakaian untuk mengurangi limbah tekstil.</li>
+      </ul>
+    </section>
+
+    <hr class="section-divider" />
+
+    <section id="campaign" class="container mt-5 section-bordered">
+      <h2>Campaign: Tukar Baju, Dapatkan Diskon!</h2>
+      <p>
+        Jika karena alasan apa pun anda merasa sudah waktunya membuang karya
+        SusVara atau baju baju lama anda, mohon jangan membuangnya. Tukarkan
+        kepada kami pada campaign circularity, agar kami dapat mencegahnya
+        berakhir di tempat pembuangan sampah yang menyebabkan menumpuknya
+        limbah, dengan cara mendaur ulang kain kain tersebut menjadi benang baru
+        yang berkualitas dan ramah lingkungan yang nantinya akan kami gunakan
+        untuk membuat bundle collection"Sentuhan Bumi". Dengan menukar 3 baju
+        lama anda, anda akan mendapatkan voucher potongan harga sebesar 30%
+        untuk semua product kami.
+      </p>
+
+      <h4>Cara Mengikuti:</h4>
+      <ol class="text-left" style="max-width: 600px">
+        <li>Kumpulkan 3 baju bekas yang sudah tidak terpakai.</li>
+        <li>Kunjungi toko atau gerai SusVara terdekat.</li>
+        <li>Serahkan pakaianmu dan dapatkan voucher diskon 30%.</li>
+        <li>Gunakan voucher untuk membeli koleksi terbaru kami.</li>
+      </ol>
+
+      <!-- Pemisah antara konten campaign dan tombol -->
+      <div class="campaign-button-container">
+        <button
+          type="button"
+          class="btn btn-primary mt-3"
+          data-bs-toggle="modal"
+          data-bs-target="#campaignModal"
+        >
+          Pelajari Lebih Lanjut
+        </button>
+      </div>
+    </section>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="campaignModal"
+      tabindex="-1"
+      aria-labelledby="campaignModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="campaignModalLabel">
+              Formulir Pendaftaran Tukar Baju
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label">Nama Lengkap</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  placeholder="Masukkan nama Anda"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Masukkan email Anda"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Nomor Telepon</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  placeholder="Masukkan nomor telepon Anda"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Metode Penukaran</label>
+                <div>
+                  <input
+                    type="radio"
+                    id="offline"
+                    name="exchangeMethod"
+                    value="offline"
+                    checked
+                  />
+                  <label for="offline">Offline (Datang ke gerai)</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="online"
+                    name="exchangeMethod"
+                    value="online"
+                  />
+                  <label for="online">Online (Kirim via ekspedisi)</label>
+                </div>
+              </div>
+
+              <div class="mb-3" id="storeSelection">
+                <label for="store" class="form-label">Pilih Lokasi Gerai</label>
+                <select class="form-select" id="store">
+                  <option value="">Pilih Gerai</option>
+                  <option value="jakarta">Jakarta</option>
+                  <option value="surabaya">Surabaya</option>
+                  <option value="bandung">Bandung</option>
+                </select>
+              </div>
+
+              <div class="mb-3" id="addressSection" style="display: none">
+                <label for="address" class="form-label"
+                  >Alamat Pengiriman</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="address"
+                  placeholder="Masukkan alamat Anda"
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="clothes" class="form-label"
+                  >Jumlah Baju yang Akan Ditukar</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="clothes"
+                  min="3"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn btn-success">
+                Daftar Sekarang
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .querySelectorAll('input[name="exchangeMethod"]')
+        .forEach((radio) => {
+          radio.addEventListener("change", function () {
+            if (this.value === "offline") {
+              document.getElementById("storeSelection").style.display = "block";
+              document.getElementById("addressSection").style.display = "none";
+            } else {
+              document.getElementById("storeSelection").style.display = "none";
+              document.getElementById("addressSection").style.display = "block";
+            }
+          });
+        });
+    </script>
+
+    <hr class="section-divider" />
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="sec aboutus">
+          <h2>About Me</h2>
+          <p>
+            SusVara mendukung gerakan slow fashion dengan menolak fast fashion
+            berlebihan. Kami fokus pada desain abadi, bahan berkualitas, dan
+            produksi yang etis serta ramah lingkungan. Kami menginspirasi
+            perubahan menuju mode yang lebih sadar dan berkelanjutan.
+          </p>
+          <ul class="sci">
+            <li>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </li>
+            <li>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </li>
+          </ul>
+        </div>
+        <div class="sec quicklinks">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="#">AboutUs</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="sec quicklinks">
+          <h2>Shop</h2>
+          <ul>
+            <li><a href="#">SusVara. X Pandawara Group</a></li>
+            <li><a href="#">Circularity</a></li>
+            <li><a href="#">Special Edition</a></li>
+            <li><a href="#">Unisex</a></li>
+            <li><a href="#">Man</a></li>
+            <li><a href="#">Women</a></li>
+          </ul>
+        </div>
+        <div class="sec contact">
+          <h2>Contact Us</h2>
+          <ul class="info">
+            <li>
+              <span><i class="fas fa-map-marker-alt"></i></span>
+              <span
+                >Jalan Ketintang, No. 23<br />
+                Wonokromo, Surabaya,<br />
+                Jawa Timur, Indonesia</span
+              >
+            </li>
+            <li>
+              <span><i class="fas fa-phone"></i></span>
+              <p>
+                <a href="#">085730221385</a><br />
+                <a href="#">085602386500</a><br />
+                <a href="#">085770178549</a>
+              </p>
+            </li>
+            <li>
+              <span><i class="fas fa-envelope"></i></span>
+              <p>
+                <a href="#">susvara.0303@gmail.com</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <div class="copyrightText">
+      <p>© 2025 SusVara. All Rights Reserved.</p>
+    </div>
+  </body>
+</html>

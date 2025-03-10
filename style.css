@@ -1,0 +1,566 @@
+/* Import Font */
+@font-face {
+  font-family: "Holiday";
+  src: url("fonts/HolidayFree.otf") format("truetype");
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Ubuntu", sans-serif;
+  background-color: white;
+  transition: margin-left 0.3s ease; /* Efek dorong */
+}
+
+.mt-5 {
+  margin-top: 7rem !important;
+}
+
+.mt-4 {
+  margin-top: 5rem !important;
+  margin-bottom: 5rem !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: transparent; /* Default transparan */
+  padding: 10px 0; /* Tambah padding atas dan bawah */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+}
+
+.header.hidden {
+  transform: translateY(-100%);
+}
+
+.header.shifted {
+  transform: translateX(-450px);
+}
+
+.header:hover {
+  background-color: white; /* Berubah menjadi putih saat disentuh */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 70px;
+}
+
+.logo {
+  font-family: "Holiday", cursive;
+  font-size: 28px;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.logo a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.logo a:hover {
+  color: #8b4513;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  font-size: 15px;
+  margin-right: 5px;
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 2px;
+}
+
+.navbar a {
+  color: black;
+  transition: color 0.3s ease;
+  text-decoration: none; /* Hapus underline */
+}
+
+.navbar a:hover {
+  color: #8b4513;
+  text-decoration: none; /* Pastikan tidak ada underline saat hover */
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Menempel langsung di bawah navbar */
+  left: 0;
+  display: none;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  min-width: 200px;
+  padding: 10px 0; /* Ruang agar isi dropdown tidak terlalu rapat */
+  z-index: 1000; /* Supaya dropdown tidak tertutup elemen lain */
+}
+
+/* Gaya untuk item dalam dropdown */
+.dropdown-menu a {
+  display: block;
+  padding: 10px 5px;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  color: #8b4513;
+}
+
+/* Tampilkan dropdown saat hover */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+  display: block; /* Dropdown tetap terlihat saat dihover */
+}
+
+/* Icon hamburger default disembunyikan */
+.menu-icon {
+  display: none;
+}
+
+/* Tampilan untuk layar kurang dari 768px */
+@media screen and (max-width: 1080px) {
+  /* Tampilkan icon hamburger */
+  .menu-icon {
+    display: block;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* Sembunyikan menu navbar secara default */
+  .navbar {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 60px; /* Sesuaikan dengan tinggi header */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+
+  /* Saat menu aktif, tampilkan menu */
+  .navbar.active {
+    display: flex;
+  }
+}
+
+/* Keranjang */
+/* Overlay (Latar Belakang Gelap Saat Sidebar Dibuka) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Efek opacity */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 998;
+}
+
+/* Saat sidebar aktif, overlay muncul */
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Sidebar dengan efek push */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -450px;
+  width: 450px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+/* Efek push */
+.sidebar.active {
+  right: 0;
+}
+
+/* Header Sidebar */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.sidebar-header h2 {
+  .sidebar-header h2 {
+    font-size: 20px;
+    margin: 0;
+    letter-spacing: 1px;
+  }
+}
+
+.sidebar-header button {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Konten Sidebar */
+.sidebar-content {
+  padding: 20px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 250px;
+  }
+}
+
+/* Carousel */
+/* Woman Ca */
+.shop-now-woman-caption {
+  position: absolute;
+  bottom: 240px;
+  left: 100px;
+  text-align: right;
+  z-index: 10;
+}
+
+.shop-now-woman-btn {
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 1px;
+  background-color: #8b4513; /* Warna coklat */
+  border: none;
+  color: #fff;
+  padding: 15px 25px;
+  text-decoration: none;
+  font-size: 16px;
+  /* border-radius: 4px; */
+  transition: background-color 0.3s ease;
+}
+
+.shop-now-woman-btn:hover {
+  background-color: #a0522d; /* Variasi coklat untuk efek hover */
+}
+
+.shop-now-woman-btn i {
+  margin-left: 8px; /* Atur jarak sesuai kebutuhan */
+}
+
+/* Man Ca */
+.shop-now-man-caption {
+  position: absolute;
+  bottom: 320px;
+  left: 124px;
+  text-align: right;
+  z-index: 10;
+}
+
+.shop-now-man-btn {
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 1px;
+  background-color: #8b4513; /* Warna coklat */
+  border: none;
+  color: #fff;
+  padding: 15px 25px;
+  text-decoration: none;
+  font-size: 16px;
+  /* border-radius: 4px; */
+  transition: background-color 0.3s ease;
+}
+
+.shop-now-man-btn:hover {
+  background-color: #a0522d; /* Variasi coklat untuk efek hover */
+}
+
+.shop-now-man-btn i {
+  margin-left: 8px; /* Atur jarak sesuai kebutuhan */
+}
+
+/* Kategori */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 25px;
+  width: 80%;
+  margin: auto;
+  height: 800px;
+  justify-content: center;
+}
+
+.grid-item {
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Pastikan gambar tetap dalam kotaknya */
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.big {
+  grid-row: span 2;
+}
+
+/* Caraousel Produk */
+
+/* Kategori Carousel */
+.katagori-title {
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 4px;
+  font-size: 30px;
+  padding-left: 110px;
+}
+
+.category-carousel-indicators {
+  position: unset;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+.category-carousel-indicators button {
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+}
+.category-carousel-indicators [data-bs-target] {
+  text-indent: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  background-color: transparent;
+  border-bottom: 1px solid #000;
+  border-right: none;
+  border-left: none;
+  border-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.category-carousel-indicators [data-bs-target]:hover {
+  color: #8b4513;
+}
+.category-carousel {
+  background-color: white;
+  overflow: hidden;
+}
+.category-carousel-inner img {
+  max-width: 100%;
+  padding: 1em;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+@media screen and (min-width: 576px) {
+  .category-carousel {
+    padding: 2em;
+    font-size: 1.3em;
+  }
+}
+
+/* Footer */
+footer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 50px 100px;
+  background: rgba(0, 0, 0, 0.148);
+}
+
+footer .container {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+  grid-gap: 20px;
+}
+
+footer .container .sec h2 {
+  position: relative;
+  color: black;
+  font-weight: 500;
+  margin-bottom: 15px;
+  font-size: 25px;
+}
+
+footer .container .sec h2::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background: black;
+}
+
+footer .container .sec p {
+  color: black;
+  font-family: "Cabin", sans-serif;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+.fa-map-marker-alt {
+  font-size: 21px; /* Sesuaikan ukuran sesuai kebutuhan */
+}
+
+.sci {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(5, 50px);
+  grid-gap: 10px;
+  padding: 0;
+}
+
+.sci li {
+  list-style: none;
+}
+
+.sci li a {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  color: black;
+  background: rgba(0, 0, 0, 0.148);
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.sci li a:hover {
+  background: black;
+  color: white;
+}
+
+.quicklinks {
+  position: relative;
+}
+
+.quicklinks ul {
+  margin: 0;
+  padding: 0;
+}
+
+.quicklinks li {
+  list-style: none;
+}
+
+.quicklinks li a {
+  color: black;
+  font-family: "Cabin", sans-serif;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: inline-block;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+.quicklinks li a:hover {
+  color: #8b4513;
+}
+
+.info {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.info li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  margin-bottom: 16px;
+}
+
+.info li span:nth-child(1) {
+  color: black;
+  font-size: 20px;
+}
+
+.info li span {
+  color: black;
+  letter-spacing: 1px;
+  font-family: "Cabin", sans-serif;
+  font-size: 15px;
+}
+
+.info a {
+  color: black;
+  text-decoration: none;
+}
+
+.info li a:hover {
+  color: #8b4513;
+}
+
+.copyrightText {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.274);
+  padding: 8px 100px;
+  text-align: center;
+  justify-content: center;
+  font-family: "Cabin", sans-serif;
+  color: black;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+
+@media (max-width: 991px) {
+  footer {
+    padding: 40px;
+  }
+  footer .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .copyrightText {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.274);
+    padding: 8px 40px;
+  }
+}
+
+@media (max-width: 991px) {
+  footer .container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
